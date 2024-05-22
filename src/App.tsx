@@ -1,64 +1,12 @@
+import { Provider } from 'react-redux';
+import { store } from './store';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './Routes';
+
 export const App = () => {
-  const a =
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1 +
-    1;
-  return <div>{a}</div>;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 };
