@@ -1,0 +1,13 @@
+.imageHolder {
+  width: 100%;
+  height: 100%;
+
+  .image {
+    transform: translate(0%, -25%);
+    opacity: 0.02;
+
+    &_shown {
+      display: none;
+    }
+  }
+}

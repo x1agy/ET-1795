@@ -1,0 +1,15 @@
+.header {
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.linkHolder {
+  &_link {
+    color: $primary;
+    line-height: normal;
+    padding: 1em;
+    border-radius: 4px;
+  }
+}

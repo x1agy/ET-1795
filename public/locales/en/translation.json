@@ -1,3 +1,9 @@
 {
-    
+    "main": "home",
+    "csv_work": "CSV sorting",
+    "string_stats": "Row statistics",
+    "zip_string": "String compression",
+    "apply_template": "Typing with Variables",
+    "header_login": "Login",
+    "language": "Application language"
 }

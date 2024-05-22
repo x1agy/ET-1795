@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from '../';
