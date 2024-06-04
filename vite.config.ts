@@ -7,12 +7,8 @@ import * as path from 'path';
 export default defineConfig(({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
   return {
-    base: mode === 'production' ? '/dashboard' : '/',
     server: {
-      port: (process.env as any).VITE_PORT || 3000,
-      proxy: {
-        '/api': (process.env as any).VITE_BASE_URL,
-      },
+      port: 3000,
     },
     plugins: [
       react(),
@@ -22,9 +18,6 @@ export default defineConfig(({ mode }) => {
         exclude: ['./src/locales/**/*.ts', 'vite.config.ts'],
       }),
     ],
-    build: {
-      sourcemap: mode === 'development',
-    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src/'),

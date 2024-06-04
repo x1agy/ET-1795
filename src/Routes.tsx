@@ -1,14 +1,19 @@
-import { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { Button } from 'antd';
-import { createBrowserRouter, Link } from 'react-router-dom';
+import { Content } from 'antd/es/layout/layout';
+import { createBrowserRouter, Link, Outlet } from 'react-router-dom';
 
 import { AppHeader } from '@/components/AppHeader';
-import { HomePage } from '@/pages';
+
+import { accountApi } from './store/api';
+import { store } from './store';
 
 const SuspenseLayout = () => (
   <Suspense fallback={<div></div>}>
     <AppHeader />
-    <HomePage />
+    <Content>
+      <Outlet />
+    </Content>
   </Suspense>
 );
 
@@ -35,6 +40,28 @@ export const router = createBrowserRouter([
       </div>
     ),
 
-    children: [],
+    children: [
+      {
+        index: true,
+        Component: lazy(() => import('@/pages/HomePage/HomePage')),
+      },
+      {
+        path: '/zip-string',
+        Component: lazy(() => import('@/pages/ZipString/ZipString')),
+      },
+      {
+        path: '/string-statistic',
+        Component: lazy(() => import('@/pages/StringStats/StringStats')),
+        loader: () => {
+          try {
+            const response = store.dispatch(accountApi.endpoints.getAccount.initiate()).unwrap();
+            return response;
+          } catch (e) {
+            console.log(e);
+            return false;
+          }
+        },
+      },
+    ],
   },
 ]);

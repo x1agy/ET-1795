@@ -5,5 +5,6 @@
     "zip_string": "String compression",
     "apply_template": "Typing with Variables",
     "header_login": "Login",
-    "language": "Application language"
+    "language": "Application language",
+    "wrongLogin": "Incorrect login or password"
 }

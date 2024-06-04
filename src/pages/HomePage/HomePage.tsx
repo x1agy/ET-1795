@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 
 import styles from './HomePage.module.scss';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [isImageShown, setIsImageShown] = useState(false);
 
   return (
@@ -17,3 +17,5 @@ export const HomePage = () => {
     </Flex>
   );
 };
+
+export default HomePage;

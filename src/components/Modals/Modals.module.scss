@@ -1,0 +1,16 @@
+.formHolder {
+  width: 100%;
+  padding-top: 1em;
+
+  .form {
+    flex: 1;
+
+    .submit {
+      width: 100%;
+      font-weight: bolder;
+      line-height: 20px;
+      font-size: 18px;
+      height: fit-content;
+    }
+  }
+}
