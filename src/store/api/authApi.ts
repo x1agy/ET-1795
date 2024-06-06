@@ -3,22 +3,10 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { createApiBaseQuery } from '@/api';
 import { endpoints } from '@/constants';
 
-interface CommonResponse<TData> {
-  data: TData;
-  error: Error | null;
-}
-
-export interface AuthUser {
-  token: string;
-  user: {
-    id: string;
-    login: string;
-    password: string;
-    username: string;
-    roles: string[];
-    color: string;
-  };
-}
+// interface CommonResponse<TData> {
+//   data: TData;
+//   error: Error | null;
+// }
 
 export const accountApi = createApi({
   reducerPath: 'accountApi',
@@ -32,17 +20,18 @@ export const accountApi = createApi({
         method: 'POST',
       }),
     }),
-    getAccount: builder.query<any, void>({
+    getAccount: builder.query<{ email: string }, void>({
       query: () => ({
         url: endpoints.user,
       }),
-      transformResponse: (res: string) => {
-        console.log(res);
-        return res;
-      },
-      transformErrorResponse: () => {},
+    }),
+    logoutUser: builder.query<unknown, void>({
+      query: () => ({
+        url: endpoints.logout,
+        method: 'DELETE',
+      }),
     }),
   }),
 });
 
-export const { useLazyPostAccountQuery, useGetAccountQuery } = accountApi;
+export const { useLazyPostAccountQuery, useGetAccountQuery, useLazyLogoutUserQuery } = accountApi;

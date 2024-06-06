@@ -5,11 +5,15 @@
     "zip_string": "Сжатие строки",
     "apply_template": "Набор текста с переменными",
     "header_login": "Логин",
+    "header_logout": "Выйти",
     "language": "Язык приложения",
     "wrongLogin": "Неправильный логин или пароль",
     "fillField": "Заполните поле",
     "header_password": "Пароль",
     "validEmail": "Введите валидную почту",
     "submit": "Отправить",
-    "successLogin": "Вы успешно вошли"
+    "successLogin": "Вы успешно вошли",
+    "validateSquare": "Валидировать квадратные скобки",
+    "validateCurly": "Валидировать фигурные скобки",
+    "validateRound": "Валидировать круглые скобки"
 }

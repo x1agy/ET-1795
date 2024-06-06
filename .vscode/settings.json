@@ -1,0 +1,31 @@
+{
+  "editor.formatOnSave": false,
+  "i18n-ally.namespace": true,
+  "i18n-ally.pathMatcher": "{locale}/{namespace}.json",
+  "i18n-ally.localesPaths": ["src/locales"],
+  "i18n-ally.enabledParsers": ["json"],
+  "i18n-ally.keystyle": "flat",
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript", "typescript"],
+  "cSpell.words": [
+    "Antd",
+    "Atnd",
+    "clsx",
+    "Iban",
+    "reduxjs",
+    "Swiper"
+  ],
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "i18n-ally.sourceLanguage": "en"
+}

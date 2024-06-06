@@ -1,0 +1,7 @@
+.selected{
+    background-color: lime;
+
+    &:hover{
+        background-color: unset;
+    }
+}

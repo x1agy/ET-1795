@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
-import { Button } from 'antd';
+import { Button, Spin } from 'antd';
 import { Content } from 'antd/es/layout/layout';
-import { createBrowserRouter, Link, Outlet } from 'react-router-dom';
+import { createBrowserRouter, Link, Outlet, redirect } from 'react-router-dom';
 
 import { AppHeader } from '@/components/AppHeader';
 
@@ -9,11 +9,13 @@ import { accountApi } from './store/api';
 import { store } from './store';
 
 const SuspenseLayout = () => (
-  <Suspense fallback={<div></div>}>
+  <Suspense fallback={<Spin fullscreen />}>
     <AppHeader />
-    <Content>
-      <Outlet />
-    </Content>
+    <Suspense fallback={<Spin fullscreen />}>
+      <Content>
+        <Outlet />
+      </Content>
+    </Suspense>
   </Suspense>
 );
 
@@ -30,19 +32,21 @@ export const router = createBrowserRouter([
           transform: 'translate(-50%, -50%)',
           display: 'flex',
           flexDirection: 'column',
+          alignItems: 'center',
           gap: '1em',
         }}
       >
-        Ooops! We are sorry for that <br />
-        <Button>
-          <Link to="/">go back</Link>
-        </Button>
+        Ooops! U are unauthorized! <br />
+        <Link to="/">
+          <Button>go back</Button>
+        </Link>
       </div>
     ),
 
     children: [
       {
         index: true,
+
         Component: lazy(() => import('@/pages/HomePage/HomePage')),
       },
       {
@@ -52,15 +56,18 @@ export const router = createBrowserRouter([
       {
         path: '/string-statistic',
         Component: lazy(() => import('@/pages/StringStats/StringStats')),
-        loader: () => {
+        loader: async () => {
           try {
             const response = store.dispatch(accountApi.endpoints.getAccount.initiate()).unwrap();
             return response;
           } catch (e) {
-            console.log(e);
-            return false;
+            redirect('/');
           }
         },
+      },
+      {
+        path: '*',
+        Component: lazy(() => import('@/pages/HomePage/HomePage')),
       },
     ],
   },

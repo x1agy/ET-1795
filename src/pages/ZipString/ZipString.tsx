@@ -35,14 +35,14 @@ const reducer = (state: InputFieldsValues, action: ChangeAction) => {
       }
     }
     case ActionType.CHANGED_RIGHT: {
-      if (action.payload.match(/[^A-Z0-9]|\d\d+/)) {
+      if (action.payload.match(/[^A-Z0-9]|^\d|([A-Z])\1/)) {
         return state;
       } else {
         return {
           right: action.payload,
-          left: action.payload.replace(/\w\d/g, (match) => {
+          left: action.payload.replace(/\w(\d+)/g, (match, p1) => {
             const matchLettersArr = match.split('');
-            return matchLettersArr[0].repeat(Number(matchLettersArr[1]));
+            return matchLettersArr[0].repeat(Number(p1));
           }),
         };
       }

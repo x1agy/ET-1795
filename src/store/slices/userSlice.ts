@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from '../';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type UserProfile = any;
 
 interface UserInitialState {

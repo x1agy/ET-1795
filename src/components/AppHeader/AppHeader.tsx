@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, memo, useCallback, useState } from 'react';
 import { Button, Flex, Popover } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import { useTranslation } from 'react-i18next';
@@ -13,11 +13,14 @@ export const AppHeader = () => {
   const { t, i18n } = useTranslation();
   const [isLngSelectOpen, setIsLngSelectOpen] = useState(false);
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+  const changeLanguage = useCallback(
+    (lng: string) => {
+      i18n.changeLanguage(lng);
+    },
+    [i18n],
+  );
 
-  const handlePopoverChange = (state: boolean) => setIsLngSelectOpen(state);
+  const handlePopoverChange = useCallback((state: boolean) => setIsLngSelectOpen(state), []);
 
   return (
     <Header className={styles.header}>
@@ -60,11 +63,11 @@ interface ChangeLanguagePopoverProps {
   handleChangeLanguage: (arg: string) => void;
 }
 
-const ChangeLanguagePopover: FC<ChangeLanguagePopoverProps> = ({ handleChangeLanguage }) => {
+const ChangeLanguagePopover: FC<ChangeLanguagePopoverProps> = memo(({ handleChangeLanguage }) => {
   return (
     <Flex vertical gap="10px">
       <Button onClick={() => handleChangeLanguage('ru')}>Russian</Button>
       <Button onClick={() => handleChangeLanguage('en')}>English</Button>
     </Flex>
   );
-};
+});
